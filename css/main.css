@@ -1,0 +1,27 @@
+body {
+    text-align: center;
+    color: rgb(57, 82, 163);
+    text-shadow: 1px 1px rgb(87, 156, 133);
+    background-color: rgb(250, 250, 222);
+}
+
+nav a {
+    color: blue;
+    text-decoration: none;
+    font-size: 25px;
+    margin: 5px 5px;
+}
+
+button {
+    background-color: blue;
+    color: white;
+    border-radius: 15px;
+    height: 35px;
+    width: 200px;
+    font-size: 20px;
+}
+
+button:hover {
+    background-color: rgb(65, 63, 63);
+    cursor: pointer;
+}

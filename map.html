@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/main.css">
+    <title>Your Favorite Places</title>
+</head>
+
+<body onload="getPosition()">
+
+    <header>
+        <h1>See your favorite places:</h1>
+    </header>
+
+    <div id="map" style="width:100%;height:500px;"></div>
+
+    <script src="js/map-controller.js">
+    </script>
+
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD_dzbpnWZjTFIWd8IkWgZodmBAJqzBhr4&callback=mapReady">
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/prefs.css">
+    <title>My preferences</title>
+</head>
+
+<body onload="initPage()">
+    <header>
+        <h1>Welcome!</h1>
+        <h2>Here you can see and change your preferences!</h2>
+    </header>
+
+    <main>
+        <form onsubmit="submitPrefs(event)">
+
+            <ul>
+                <li>
+                    <label>
+                Favorite Colors:
+                <input type="color" name="prefColorBg" oninput="changeBgColor(this.value)">
+                <input type="color" name="prefColorTxt" oninput="changeTxtColor(this.value)">
+            </label>
+                </li>
+                <li>
+                    <label>
+                Birth Date:
+                <input type="date" name="birthDate">
+            </label>
+                </li>
+                <li>
+                    <label>
+                Email:
+                <input type="email" name="userEmail" required>
+            </label>
+                </li>
+                <li>
+                    <label>
+                Age:
+                <input type="range" name="userAge" min="12" max="120" value="12"  oninput="showAge(this.value)" >
+                <span class='sAge'> 12</span>
+            </label>
+                </li>
+
+            </ul>
+            <button>Save Preferences</button>
+        </form>
+    </main>
+    <script src="js/services/storage-service.js"></script>
+    <script src="js/services/user-pref-service.js"></script>
+    <script src="js/pref-controller.js"></script>
+</body>
+
+</html>
