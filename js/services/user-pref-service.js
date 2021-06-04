@@ -9,7 +9,6 @@ function getPrefVals() {
 
 
 function savePrefs(bgColor, txtColor, birthDate, email, age) {
-    console.log(email);
     gPrefValMap = {
         bgColor,
         txtColor,

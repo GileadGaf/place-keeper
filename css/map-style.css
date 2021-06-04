@@ -1,0 +1,22 @@
+.currLocIcon {
+    position: absolute;
+    top: 50%;
+    right: 10%;
+    width: 50px;
+    cursor: pointer;
+}
+
+main {
+    margin-top: 20px;
+}
+
+main tr {
+    cursor: pointer;
+}
+
+main tr button {
+    height: 50px;
+    width: 50px;
+    background-color: #fafade;
+    border-radius: 50%;
+}

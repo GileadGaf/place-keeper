@@ -8,33 +8,56 @@ function initPage() {
     var elBgColor = document.querySelector('[name=prefColorBg]');
     var elTxtColor = document.querySelector('[name=prefColorTxt]');
 
-    elBgColor.value = prefVals.bgColor;
-    elTxtColor.value = prefVals.txtColor;
+    if (prefVals.bgColor && prefVals.txtColor) {
+        elBgColor.value = prefVals.bgColor;
+        elTxtColor.value = prefVals.txtColor;
+    }
 
     var elBirthDate = document.querySelector('[name=birthDate]');
     elBirthDate.value = formatDate(prefVals.birthDate);
 
     var elUserEmail = document.querySelector('[name=userEmail]');
-    elUserEmail.value = prefVals.email;
+    elUserEmail.value = (prefVals.email) ? prefVals.email : '';
 
     var elUserAge = document.querySelector('[name=userAge]');
 
     elUserAge.value = prefVals.age;
-    showAge(elUserAge.value);
+    showAge(elUserAge);
 }
 
 
 function formatDate(birthDate) {
     var date = new Date(birthDate);
     var years = date.getFullYear();
-    var months = date.getMonth();
-    var days = date.getDay();
-    var timeFormat = years + '-' + (months + '').padStart(2, '0') + '-' + (days + '').padStart(2, '0')
+    var months = date.getMonth() + 1;
+    var days = date.getDate();
+    if (!birthDate) {
+        var today = new Date();
+        years = today.getFullYear();
+        months = today.getMonth() + 1;
+        days = today.getDate();
+    }
+    var timeFormat = years + '-' + (months + '').padStart(2, '0') + '-' + (days + '').padStart(2, '0');
     return timeFormat;
 }
 
-function showAge(newVal) {
-    document.querySelector(".sAge").innerText = newVal;
+function showAge(elUserAge) {
+    if (elUserAge && elUserAge.value) {
+        var newVal = elUserAge.value;
+        document.querySelector(".sAge").innerText = newVal;
+        var prefVals = getPrefVals();
+
+        if (prefVals.age) {
+            var birthYear = new Date(prefVals.birthDate).getFullYear();
+            var IsAgeValid = isValidAge(birthYear, +newVal);
+            if (!IsAgeValid) {
+                elUserAge.setCustomValidity('Wrong age!');
+            } else {
+                elUserAge.setCustomValidity('');
+            }
+
+        }
+    }
 }
 
 function submitPrefs(ev) {
@@ -57,20 +80,23 @@ function submitPrefs(ev) {
     var prefVals = getPrefVals();
 
     if (prefVals.age) {
-        var currYear = new Date(prefVals.birthDate).getFullYear();
-        var IsAgeValid = isValidAge(currYear, +elUserAge.value);
-        // if (!IsAgeValid) {
-        //     elUserAge.setCustomValidity('Wrong age!');
-        // } else elUserAge.setCustomValidity('');
+        var birthYear = new Date(prefVals.birthDate).getFullYear();
+        var IsAgeValid = isValidAge(birthYear, +elUserAge.value);
+        if (!IsAgeValid) {
+            elUserAge.setCustomValidity('Wrong age!');
+            return;
+        }
+        console.log(IsAgeValid);
+        savePrefs(elBgColor.value, elTxtColor.value, birthDate, elUserEmail.value, +elUserAge.value);
+
     }
 
-    savePrefs(elBgColor.value, elTxtColor.value, birthDate, elUserEmail.value, +elUserAge.value);
+
 
 }
-
-function isValidAge(currYear, age) {
-    var realAge = new Date().getFullYear() - currYear;
-    console.log(realAge + ' ' + age);
+//Shallow validation
+function isValidAge(birthYear, age) {
+    var realAge = new Date().getFullYear() - birthYear;
     return realAge === age;
 }
 

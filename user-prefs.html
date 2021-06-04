@@ -15,7 +15,10 @@
         <h1>Welcome!</h1>
         <h2>Here you can see and change your preferences!</h2>
     </header>
-
+    <nav>
+        <a href="index.html">Home</a>|
+        <a href="map.html">Map</a>
+    </nav>
     <main>
         <form onsubmit="submitPrefs(event)">
 
@@ -30,19 +33,19 @@
                 <li>
                     <label>
                 Birth Date:
-                <input type="date" name="birthDate">
+                <input type="date" name="birthDate" >
             </label>
                 </li>
                 <li>
                     <label>
                 Email:
-                <input type="email" name="userEmail" required>
+                <input type="email" name="userEmail" placeholder="example@example.com" required>
             </label>
                 </li>
                 <li>
                     <label>
                 Age:
-                <input type="range" name="userAge" min="12" max="120" value="12"  oninput="showAge(this.value)" >
+                <input type="range" name="userAge" min="12" max="120" value="12"  oninput="showAge(this)" >
                 <span class='sAge'> 12</span>
             </label>
                 </li>
