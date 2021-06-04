@@ -10,10 +10,32 @@ function init() {
 function bindMapClick() {
     var map = getMap();
     map.addListener('click', function(mapsMouseEvent) {
-        mapClicked(mapsMouseEvent);
-        renderLocs();
+        var elModal = document.querySelector('.modal');
+        var pos = mapsMouseEvent.latLng.toJSON();
+        elModal.querySelector('[name=coordsLoc]').value = pos.lat + 'Co' + pos.lng;
+        elModal.hidden = false;
+
+        // mapClicked(mapsMouseEvent);
+        // renderLocs();
     });
 
+}
+
+function saveLocation(ev) {
+    ev.preventDefault();
+    var elTxtName = document.querySelector('[name=txtLoc]');
+    if (!elTxtName || !elTxtName.value) return;
+    var elHdnCoords = document.querySelector('[name=coordsLoc]');
+    if (!elHdnCoords || !elHdnCoords.value) return;
+    var coords = elHdnCoords.value.split('Co');
+    if (!coords.length) return;
+    var position = { lat: +coords[0], lng: +coords[1] };
+    if (isNaN(position.lat) || isNaN(position.lng)) return;
+    submitLocation(position, elTxtName.value);
+    elTxtName.value = '';
+    elHdnCoords.value = '';
+    renderLocs();
+    closeModal();
 }
 
 
@@ -36,4 +58,10 @@ function renderLocs() {
 function onDeleteLoc(locId) {
     deleteLoc(locId);
     renderLocs();
+}
+
+function closeModal() {
+    var elModal = document.querySelector('.modal');
+
+    elModal.hidden = true;
 }

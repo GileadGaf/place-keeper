@@ -86,8 +86,9 @@ function submitPrefs(ev) {
             elUserAge.setCustomValidity('Wrong age!');
             return;
         }
-        console.log(IsAgeValid);
         savePrefs(elBgColor.value, elTxtColor.value, birthDate, elUserEmail.value, +elUserAge.value);
+        var elModal = document.querySelector('.modal');
+        elModal.hidden = false
 
     }
 
@@ -106,4 +107,10 @@ function changeBgColor(bgColor) {
 
 function changeTxtColor(txtColor) {
     document.body.style.color = txtColor;
+}
+
+
+function closeModal() {
+    var elModal = document.querySelector('.modal');
+    elModal.hidden = true;
 }

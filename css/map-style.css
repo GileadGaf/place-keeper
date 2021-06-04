@@ -6,6 +6,17 @@
     cursor: pointer;
 }
 
+.modal input[type=text] {
+    text-align: center;
+    height: 30px;
+    border-radius: 15px;
+}
+
+.modal button {
+    display: block;
+    margin: 20px auto;
+}
+
 main {
     margin-top: 20px;
 }

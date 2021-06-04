@@ -21,7 +21,17 @@
     </nav>
 
     <div id="map" style="width:100%;height:500px;"></div>
-
+    <aside>
+        <section class="modal" hidden>
+            <button class="close-modal" onclick="closeModal()">❌</button>
+            <h3>Please enter a name for the location:</h3>
+            <form onsubmit="saveLocation(event)">
+                <input type="hidden" name="coordsLoc">
+                <input type="text" name="txtLoc" placeholder="Home">
+                <button>Save</button>
+            </form>
+        </section>
+    </aside>
     <img class="currLocIcon" src="img/OIP.png" onclick="showCurrLocation()">
     <main>
         <table border="0">

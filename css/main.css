@@ -3,7 +3,11 @@ body {
     color: rgb(57, 82, 163);
     text-shadow: 1px 1px rgb(87, 156, 133);
     background-color: rgb(250, 250, 222);
+    margin: 0;
 }
+
+
+/* Flex center: */
 
 nav a {
     color: blue;
@@ -24,4 +28,34 @@ button {
 button:hover {
     background-color: rgb(65, 63, 63);
     cursor: pointer;
+}
+
+.modal {
+    position: absolute;
+    height: 50%;
+    width: 70%;
+    left: 50%;
+    top: 36%;
+    transform: translate(-50%, -50%);
+    background-color: black;
+    opacity: 0.9;
+}
+
+.modal h3 {
+    font-size: 30px;
+    color: white;
+    margin: 60px 0;
+}
+
+.modal .close-modal {
+    position: absolute;
+    right: 5px;
+    top: 0;
+    height: 40px;
+    width: 40px;
+    background-color: white;
+}
+
+.close-modal:hover {
+    background-color: rgb(87, 83, 83);
 }

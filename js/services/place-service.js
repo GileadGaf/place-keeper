@@ -5,16 +5,7 @@ var gMap;
 var gFavLocations = getLocs();
 var gMarkers;
 
-// function getPosition() {
-//     if (!navigator.geolocation) {
-//         alert("HTML5 Geolocation is not supported in your browser.");
-//         return;
-//     }
 
-//     navigator.geolocation.getCurrentPosition(showLocation, handleLocationError);
-//     // One shot position getting or continus watch
-//     // navigator.geolocation.watchPosition(showLocation, handleLocationError);
-// }
 
 function getMap() {
     return gMap;
@@ -83,14 +74,12 @@ function initMap() {
 
 }
 
-function mapClicked(mapsMouseEvent) {
-    var pos = mapsMouseEvent.latLng.toJSON();
-    var locName = prompt('Give this location a name');
-    if (!locName) return;
+function submitLocation(position, locName) {
     var id = makeId();
-    gFavLocations.push({ id, position: pos, locName });
+    gFavLocations.push({ id, position, locName });
+
     var newMarker = new google.maps.Marker({
-        position: { lat: pos.lat, lng: pos.lng },
+        position,
         map: gMap,
         title: locName
     });
